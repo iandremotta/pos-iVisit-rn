@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Colors } from '../../constants/colors';
 import { Visit } from '../../models/visit';
 import { PlaceItem } from './VisitItem';
 
@@ -29,5 +30,6 @@ const styles = StyleSheet.create({
   },
   fallBackText: {
     fontSize: 16,
+    color: Colors.primary200,
   },
 });

@@ -4,17 +4,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AllVisits } from '../screens/place/AllVisitsScreen';
 import { IconButton } from '../components/UI/IconButton';
 import { AddVisit } from '../screens/place/AddVisitScreen';
+import { Colors } from '../constants/colors';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.primary500 },
+        headerTintColor: Colors.gray700,
+        contentStyle: { backgroundColor: Colors.gray700 },
+      }}
+    >
       <Stack.Screen
         name="AllVisits"
         component={AllVisits}
         options={({ navigation }) => ({
+          title: 'Your Visiting Places',
           headerRight: ({ tintColor }) => (
             <IconButton
               icon="plus"
