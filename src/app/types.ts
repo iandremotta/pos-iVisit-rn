@@ -1,6 +1,7 @@
 export type Coords = {
-  latitude: number;
-  longitude: number;
+  address: string;
+  latitude: number | undefined;
+  longitude: number | undefined;
 };
 
 export type AppState = {

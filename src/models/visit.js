@@ -1,10 +1,13 @@
 import { generateId } from '../utils/generateId';
 
 export class Visit {
-  constructor(title, address, location) {
+  constructor(title, location) {
     this.title = title;
-    this.address = address;
-    this.location = location;
+    this.address = location.address;
+    this.location = {
+      latitude: location.latitude,
+      longitude: location.longitude,
+    };
     this.id = generateId();
   }
 }

@@ -1,20 +1,57 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { Coords } from '../../app/types';
 import { Colors } from '../../constants/colors';
 import { getCoords } from '../../gelocation/getCoords';
+import { getAddress, getMapPreview } from '../../utils/location';
 import { OutlinedButton } from '../UI/OutlinedButton';
 
-export function LocationPicker() {
+export function LocationPicker({ onPickLocation }: any) {
+  const [pickedLocation, setPickedLocation] = useState<Coords>();
+  const navigation = useNavigation();
   async function getLocationHandler() {
-    var coors = await getCoords();
-    console.log(coors);
+    var location = await getCoords();
+    setPickedLocation({
+      latitude: location?.latitude,
+      longitude: location?.longitude,
+    });
   }
 
-  function pickOnMapHandler() { }
+  function pickOnMapHandler() {
+    navigation.navigate('Map', { screen: 'MapScreen' });
+  }
+
+  useEffect(() => {
+    async function handleLocation() {
+      if (pickedLocation) {
+        const address = await getAddress(pickedLocation);
+        onPickLocation({ ...pickedLocation, address: address });
+      }
+    }
+
+    handleLocation();
+  }, [pickedLocation, onPickLocation]);
+
+  let locationPreview = <Text>No location picked yet.</Text>;
+
+
+  if (pickedLocation) {
+    locationPreview = (
+      <Image style={styles.image}
+        source={{
+          uri: getMapPreview({
+            latitude: pickedLocation?.latitude,
+            longitude: pickedLocation?.longitude,
+          }),
+        }}
+      />
+    );
+  }
 
   return (
     <View>
-      <View style={styles.mapPreview}></View>
+      <View style={styles.mapPreview}>{locationPreview}</View>
       <View style={styles.actions}>
         <OutlinedButton icon="globe" onPress={getLocationHandler}>
           Locate User
@@ -36,10 +73,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.primary400,
     borderRadius: 4,
+    overflow: 'hidden',
   },
   actions: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });

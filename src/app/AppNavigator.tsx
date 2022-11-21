@@ -5,6 +5,7 @@ import { AllVisits } from '../screens/place/AllVisitsScreen';
 import { IconButton } from '../components/UI/IconButton';
 import { AddVisit } from '../screens/place/AddVisitScreen';
 import { Colors } from '../constants/colors';
+import { MapScreen } from '../screens/map/MapScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -44,7 +45,7 @@ export function AppNavigator() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={HomeStackScreen} />
-      <Tab.Screen name="Locais" component={AllVisits} />
+      <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>
   );
 }

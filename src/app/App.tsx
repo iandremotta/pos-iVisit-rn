@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 import { requestPermission } from '../gelocation/requestPermission';
+import { watchGeolocation } from '../gelocation/watchGeolocation';
 import { AppContext, initialAppState } from './AppContext';
 import { AppNavigator } from './AppNavigator';
 
