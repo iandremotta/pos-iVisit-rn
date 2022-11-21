@@ -5,7 +5,7 @@ Home Screen - Listagem de locais de visita
 ![image](https://user-images.githubusercontent.com/40709857/203179518-6222108c-2ee7-4e1c-b41d-1197c021c0fb.png)
 
 
-Add Visit - Adiciona uma nova visita
+Add Visit - Adiciona uma nova visita, buscando a localização atual do usuário
 
 ![image](https://user-images.githubusercontent.com/40709857/203179642-233f44ac-d861-43fe-b034-5eefebc459c3.png)
 
