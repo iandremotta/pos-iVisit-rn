@@ -37,12 +37,18 @@ function HomeStackScreen() {
           ),
         })}
       />
-      <Stack.Screen name="AddVisit" component={AddVisit} />
+      <Stack.Screen
+        name="AddVisit"
+        component={AddVisit}
+        options={{
+          title: 'Add Visit',
+        }}
+      />
       <Stack.Screen
         name="VisitDetails"
         component={VisitDetailsScreen}
         options={{
-          title: 'Loading Place...',
+          title: 'Details Screen',
         }}
       />
     </Stack.Navigator>
@@ -51,7 +57,17 @@ function HomeStackScreen() {
 
 export function AppNavigator() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarLabelPosition: "beside-icon",
+        tabBarLabelStyle: {
+          fontWeight: "700",
+          fontSize: 15
+        },
+        tabBarIconStyle: { display: "none" },
+      }}
+    >
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
     </Tab.Navigator>

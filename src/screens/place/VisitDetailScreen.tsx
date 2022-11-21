@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { OutlinedButton } from '../../components/UI/OutlinedButton';
 import { Colors } from '../../constants/colors';
-import { Visit } from '../../models/visit';
 
 export function VisitDetailsScreen({ route, navigation }) {
   function showOnMapHandler() {
@@ -15,7 +14,7 @@ export function VisitDetailsScreen({ route, navigation }) {
     <ScrollView>
       <View style={styles.screen}>
         <View>
-          <Text style={{ color: 'white' }}>{visit.title}</Text>
+          <Text style={styles.title}>{visit.title}</Text>
           <Text style={styles.experience}>{visit.experience}</Text>
           <View style={styles.addressContainer}>
             <Text style={styles.address}>{visit.address}</Text>
@@ -38,6 +37,18 @@ const styles = StyleSheet.create({
   },
   addressContainer: {
     padding: 20,
+  },
+  title: {
+    color: Colors.accent500,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 24,
+    paddingTop: 24,
+  },
+  experience: {
+    color: Colors.primary100,
+    padding: 24,
+    fontSize: 16,
   },
   address: {
     color: Colors.primary500,

@@ -11,7 +11,7 @@ export function Button({ onPress, children }: Button) {
       onPress={onPress}
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}
     >
-      <Text>{children}</Text>
+      <Text style={styles.text}>{children}</Text>
     </Pressable>
   );
 }
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    margin: 4,
+    margin: 12,
     backgroundColor: Colors.primary800,
     elevation: 2,
     shadowColor: 'black',

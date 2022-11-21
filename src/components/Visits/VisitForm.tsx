@@ -5,6 +5,7 @@ import { Colors } from '../../constants/colors';
 import { Button } from '../UI/Button';
 import { LocationPicker } from './LocationPicker';
 import { Visit } from '../../models/visit';
+import styled from 'styled-components/native';
 
 export function VisitForm({ onCreateVisit }: any) {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -36,44 +37,40 @@ export function VisitForm({ onCreateVisit }: any) {
   }
   useState();
   return (
-    <ScrollView style={styles.form}>
-      <View>
-        <Text style={styles.label}>Title</Text>
-        <TextInput
-          onChangeText={changeTitleHandler}
-          value={enteredTitle}
-          style={styles.input}
-        />
-        <Text style={styles.label}>Experience</Text>
-        <TextInput
+    <Form>
+      <Container>
+        <Label>Title</Label>
+        <Input onChangeText={changeTitleHandler} value={enteredTitle} />
+        <Label>Experience</Label>
+        <Input
           multiline={true}
           onChangeText={changeExperienceHandler}
           value={enteredExperience}
-          style={styles.input}
         />
-      </View>
+      </Container>
       <LocationPicker onPickLocation={pickLocationHandler} />
       <Button onPress={savePlaceHandler}>Save Visit</Button>
-    </ScrollView>
+    </Form>
   );
 }
 
-const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    padding: 24,
-  },
-  label: {
-    fontWeight: 'bold',
-    marginBottom: 4,
-    color: Colors.primary500,
-  },
-  input: {
-    paddingHorizontal: 4,
-    paddingVertical: 8,
-    fontSize: 16,
-    borderColor: Colors.primary700,
-    borderBottomWidth: 2,
-    backgroundColor: Colors.primary100,
-  },
-});
+export const Container = styled.View``;
+
+export const Form = styled.ScrollView`
+  flex: 1;
+  padding: 24px;
+`;
+
+export const Label = styled.Text`
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: ${Colors.primary500};
+`;
+
+export const Input = styled.TextInput`
+  padding: 4px 8px;
+  font-size: 16px;
+  border-color: ${Colors.primary700};
+  border-bottom-width: 2px;
+  background-color: ${Colors.primary100};
+`;
