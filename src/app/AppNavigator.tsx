@@ -6,6 +6,7 @@ import { IconButton } from '../components/UI/IconButton';
 import { AddVisit } from '../screens/place/AddVisitScreen';
 import { Colors } from '../constants/colors';
 import { MapScreen } from '../screens/map/MapScreen';
+import { VisitDetailsScreen } from '../screens/place/VisitDetailScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,6 +38,13 @@ function HomeStackScreen() {
         })}
       />
       <Stack.Screen name="AddVisit" component={AddVisit} />
+      <Stack.Screen
+        name="VisitDetails"
+        component={VisitDetailsScreen}
+        options={{
+          title: 'Loading Place...',
+        }}
+      />
     </Stack.Navigator>
   );
 }

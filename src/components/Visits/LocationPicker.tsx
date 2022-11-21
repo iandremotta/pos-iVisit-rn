@@ -19,7 +19,7 @@ export function LocationPicker({ onPickLocation }: any) {
   }
 
   function pickOnMapHandler() {
-    navigation.navigate('Map', { screen: 'MapScreen' });
+    navigation.navigate('Map');
   }
 
   useEffect(() => {
@@ -35,10 +35,10 @@ export function LocationPicker({ onPickLocation }: any) {
 
   let locationPreview = <Text>No location picked yet.</Text>;
 
-
   if (pickedLocation) {
     locationPreview = (
-      <Image style={styles.image}
+      <Image
+        style={styles.image}
         source={{
           uri: getMapPreview({
             latitude: pickedLocation?.latitude,

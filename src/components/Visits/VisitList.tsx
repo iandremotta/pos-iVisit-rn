@@ -1,10 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../../constants/colors';
-import { Visit } from '../../models/visit';
 import { VisitItem } from './VisitItem';
 
 export function VisitList({ visits }) {
+  const navigation = useNavigation();
+  function selectVisitHandler(visit) {
+    navigation.navigate('VisitDetails', { visit: visit });
+  }
   if (!visits || visits.length === 0) {
     return (
       <View style={styles.fallBackContainer}>
@@ -19,7 +23,7 @@ export function VisitList({ visits }) {
       data={visits}
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
-        <VisitItem visit={item} onSelect={console.log('nothing')} />
+        <VisitItem visit={item} onSelect={selectVisitHandler} />
       )}
     />
   );

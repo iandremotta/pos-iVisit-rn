@@ -6,11 +6,17 @@ import { Button } from '../UI/Button';
 import { LocationPicker } from './LocationPicker';
 import { Visit } from '../../models/visit';
 
-export function VisitForm({ onCreatePlace }) {
+export function VisitForm({ onCreateVisit }: any) {
   const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredExperience, setEnteredExperience] = useState('');
   const [enteredLocation, setEnteredLocation] = useState<Coords>();
+
   function changeTitleHandler(title: string) {
     setEnteredTitle(title);
+  }
+
+  function changeExperienceHandler(experience: string) {
+    setEnteredExperience(experience);
   }
 
   const pickLocationHandler = useCallback((location: Coords) => {
@@ -18,8 +24,15 @@ export function VisitForm({ onCreatePlace }) {
   }, []);
 
   function savePlaceHandler() {
-    const placeData = new Visit(enteredTitle, enteredLocation);
-    onCreatePlace(placeData);
+    if (enteredTitle !== '' && enteredLocation !== null) {
+      let visitData = new Visit(
+        enteredTitle,
+        enteredExperience,
+        enteredLocation,
+      );
+      onCreateVisit(visitData);
+    }
+    return;
   }
   useState();
   return (
@@ -29,6 +42,13 @@ export function VisitForm({ onCreatePlace }) {
         <TextInput
           onChangeText={changeTitleHandler}
           value={enteredTitle}
+          style={styles.input}
+        />
+        <Text style={styles.label}>Experience</Text>
+        <TextInput
+          multiline={true}
+          onChangeText={changeExperienceHandler}
+          value={enteredExperience}
           style={styles.input}
         />
       </View>

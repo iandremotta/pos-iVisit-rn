@@ -1,5 +1,5 @@
 export type Coords = {
-  address: string;
+  address: string | undefined;
   latitude: number | undefined;
   longitude: number | undefined;
 };

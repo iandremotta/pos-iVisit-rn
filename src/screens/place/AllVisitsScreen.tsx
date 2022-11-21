@@ -13,4 +13,4 @@ export function AllVisits({ route }) {
   }, [isFocused, route]);
 
   return <VisitList visits={loadedVisits} />;
-};
+}

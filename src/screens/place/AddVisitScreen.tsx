@@ -1,11 +1,11 @@
 import React from 'react';
 import { VisitForm } from '../../components/Visits/VisitForm';
 
-export function AddVisit({ navigation }) {
-  function createPlaceHandler(place) {
+export function AddVisit({ navigation }: any) {
+  function createPlaceHandler(place: any) {
     navigation.navigate('AllVisits', {
       place: place,
     });
   }
-  return <VisitForm onCreatePlace={createPlaceHandler} />;
+  return <VisitForm onCreateVisit={createPlaceHandler} />;
 }
