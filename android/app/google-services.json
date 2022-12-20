@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "991621122866",
+    "project_id": "ivisit-872d6",
+    "storage_bucket": "ivisit-872d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991621122866:android:386069608b86f0717aa52b",
+        "android_client_info": {
+          "package_name": "com.ivisit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991621122866-fsda78vlar5qaquk7cmap58jvqlstghp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhXAf72qsEZbyIkj66xFeZtAvm-C5Xm-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991621122866-fsda78vlar5qaquk7cmap58jvqlstghp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">iVisit</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">4e209d97-e98e-43ab-8556-dedffe21472e</string>
 </resources>

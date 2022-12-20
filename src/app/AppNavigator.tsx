@@ -7,6 +7,8 @@ import { AddVisit } from '../screens/place/AddVisitScreen';
 import { Colors } from '../constants/colors';
 import { MapScreen } from '../screens/map/MapScreen';
 import { VisitDetailsScreen } from '../screens/place/VisitDetailScreen';
+import { ProfileScreen } from '../screens/profile/ProfileScreen';
+import { FeedScreen } from '../screens/feed/FeedScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -63,13 +65,15 @@ export function AppNavigator() {
         tabBarLabelPosition: "beside-icon",
         tabBarLabelStyle: {
           fontWeight: "700",
-          fontSize: 15
+          fontSize: 15,
         },
         tabBarIconStyle: { display: "none" },
       }}
     >
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Feed" component={FeedScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }

@@ -1,11 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Coords } from '../../app/types';
-import { Colors } from '../../constants/colors';
 import { Button } from '../UI/Button';
 import { LocationPicker } from './LocationPicker';
 import { Visit } from '../../models/visit';
-import styled from 'styled-components/native';
+import { Box, Input, ScrollView, Text, TextArea } from 'native-base';
 
 export function VisitForm({ onCreateVisit }: any) {
   const [enteredTitle, setEnteredTitle] = useState('');
@@ -37,40 +35,32 @@ export function VisitForm({ onCreateVisit }: any) {
   }
   useState();
   return (
-    <Form>
-      <Container>
-        <Label>Title</Label>
-        <Input onChangeText={changeTitleHandler} value={enteredTitle} />
-        <Label>Experience</Label>
+    <ScrollView flex="1" padding="4">
+      <Box>
+        <Text fontWeight="bold" marginBottom="4px">
+          Title
+        </Text>
         <Input
-          multiline={true}
+          paddingX="4px"
+          paddingY="8px"
+          borderBottomWidth="2px"
+          borderColor="blue.700"
+          backgroundColor="blue.100"
+          onChangeText={changeTitleHandler}
+          value={enteredTitle}
+        />
+        <Text fontWeight="bold" marginBottom="4px">
+          Experience
+        </Text>
+        <TextArea
+          backgroundColor="blue.100"
           onChangeText={changeExperienceHandler}
           value={enteredExperience}
+          autoCompleteType={undefined}
         />
-      </Container>
+      </Box>
       <LocationPicker onPickLocation={pickLocationHandler} />
       <Button onPress={savePlaceHandler}>Save Visit</Button>
-    </Form>
+    </ScrollView>
   );
 }
-
-export const Container = styled.View``;
-
-export const Form = styled.ScrollView`
-  flex: 1;
-  padding: 24px;
-`;
-
-export const Label = styled.Text`
-  font-weight: bold;
-  margin-bottom: 4px;
-  color: ${Colors.primary500};
-`;
-
-export const Input = styled.TextInput`
-  padding: 4px 8px;
-  font-size: 16px;
-  border-color: ${Colors.primary700};
-  border-bottom-width: 2px;
-  background-color: ${Colors.primary100};
-`;

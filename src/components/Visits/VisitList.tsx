@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
+import { FlatList, Flex, Text } from 'native-base';
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { Colors } from '../../constants/colors';
 import { VisitItem } from './VisitItem';
 
 export function VisitList({ visits }) {
@@ -11,16 +10,16 @@ export function VisitList({ visits }) {
   }
   if (!visits || visits.length === 0) {
     return (
-      <View style={styles.fallBackContainer}>
-        <Text style={styles.fallBackText}>Add something new here.</Text>
-      </View>
+      <Flex flex="1" justifyContent="center" alignItems="center">
+        <Text fontSize="16">Add something new here.</Text>
+      </Flex>
     );
   }
 
   return (
     <FlatList
-      style={styles.list}
       data={visits}
+      margin="24"
       keyExtractor={item => item.id}
       renderItem={({ item }) => (
         <VisitItem visit={item} onSelect={selectVisitHandler} />
@@ -28,18 +27,3 @@ export function VisitList({ visits }) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  list: {
-    margin: 24,
-  },
-  fallBackContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fallBackText: {
-    fontSize: 16,
-    color: Colors.primary200,
-  },
-});
