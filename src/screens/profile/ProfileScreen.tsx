@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Column, Input, useColorMode } from 'native-base';
+import { Button, Column, Input, Text, useColorMode } from 'native-base';
 import {
   userActions,
   useAppDispatch,
@@ -21,8 +21,9 @@ export function ProfileScreen() {
       padding="4"
       height="full"
     >
+      <Text>Name</Text>
       <Input
-        placeholder="Nome completo"
+        placeholder="Primeiro Nome"
         value={name}
         onChangeText={name => {
           dispatch(

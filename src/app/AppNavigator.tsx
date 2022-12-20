@@ -9,11 +9,13 @@ import { MapScreen } from '../screens/map/MapScreen';
 import { VisitDetailsScreen } from '../screens/place/VisitDetailScreen';
 import { ProfileScreen } from '../screens/profile/ProfileScreen';
 import { FeedScreen } from '../screens/feed/FeedScreen';
+import { useAppSelector } from '../app/appStore';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function HomeStackScreen() {
+  const name = useAppSelector(state => state.user.name);
   return (
     <Stack.Navigator
       screenOptions={{
@@ -26,7 +28,7 @@ function HomeStackScreen() {
         name="AllVisits"
         component={AllVisits}
         options={({ navigation }) => ({
-          title: 'Your Visiting Places',
+          title: `Your Visiting Places ${name}`,
           headerRight: ({ tintColor }) => (
             <IconButton
               icon="plus"
